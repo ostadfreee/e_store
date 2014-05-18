@@ -1,0 +1,15 @@
+<%= simple_form_for @cart, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :credit_number, :hint => 'Should be filled', :placeholder => 'Credit Cart Number' %>
+  <%= f.input :credit_pin, :hint => 'Should be filled', :placeholder => 'Credit Pin Code'   %>
+  <%= f.input :credit_date , :hint => 'Should be filled ',:placeholder => 'Credit Expire Date' %>
+     
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                carts_path, :class => 'btn' %>
+  </div>
+<% end %>
+
+
+  
+ 

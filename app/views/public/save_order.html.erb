@@ -1,0 +1,7 @@
+ <p><%= @customer.first_name %></p><br>
+        <p><%= @customer.last_name %></p> <br>
+        <p><%= truncate(@customer.email, :length=> 10) %></p><br>
+        <p><%= @customer.address %></p>
+        <p><%= @customer.birthday %></p><br>
+        <%= debug(@customer)%>
+<%= debug(@cart)%>

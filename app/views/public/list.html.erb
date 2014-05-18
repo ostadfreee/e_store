@@ -1,0 +1,46 @@
+<%- model_class = Product -%>
+<% provide(:title, 'List') %>
+<% provide(:header ,'List') %>
+   
+
+
+<div class="row text-center"> 
+
+            <ul class="thumbnails">
+                        <% @products.each do |product| %>
+
+              <li class = "col-lg-2">
+
+                <div class="thumbnail">
+
+                    <div class="caption">
+                      <%= image_tag(product.image_path, :size => "250", :class => 'img-rounded') %>
+                        <h4><%= product.name %></h4>
+                        <p><%= truncate(product.product_content, :lenght => 20) %></p>
+                        <p><%= number_to_currency(product.price) %></p>
+                        <p><%#= link_to t('.buy now!', :default => t("helpers.links.buy now")),
+                          {:action => 'add_to_cart', :id => product.id}, :class => 'btn btn-primary btn-sm'%>
+                          <%= link_to t('.more info!', :default => t("helpers.links.more info")),
+                          {:action => 'show_product', :id => product.id}, :class => 'btn btn-default btn-sm'%>
+                        </p>
+                    </div>
+                  </div>
+                </li>  
+                <% end %>
+               </ul>
+               
+
+            </div>
+<div class="apple_pagination">
+    <div class="page_info">
+      <%= page_entries_info @products %>
+    </div>
+    <%= will_paginate @products, :container => false %>
+  </div>
+
+
+
+
+
+
+

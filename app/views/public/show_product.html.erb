@@ -1,0 +1,29 @@
+<div class="row">
+                        <!-- Left col -->
+                        <section class="col-lg-12 connectedSortable"> 
+                                                             
+                                    <div class="row">
+                                        <div class="col-sm-5">
+                                            <div><%= image_tag(@product.image_path, :size => "320", :class => 'img-polaroid') %></div>
+                                        </div>
+                                        <div class="col-sm-5">
+                                                <!-- Progress bars -->
+                                                <div class="clearfix">
+                                                    <small><span class="pull-left"><h4><%=@product.name%></h4></span></small>
+                                                </div>
+                                                    <div class="clearfix">
+                                                    <span class="pull-left"><p><%=@product.product_content %></p></span>
+                                                </div>
+                                                    <div class="clearfix">
+                                                    <span class="pull-left"><p><%=number_to_currency(@product.price) %></p></span>
+                                                </div>
+                                                    <div class="clearfix">
+                                                    <span class="pull-left"><p><%= link_to t('.buy now!', :default => t("helpers.links.buy now")),
+                          {:action => 'add_to_basket', :id => @product.id}, :class => 'btn btn-primary btn-sm'%></span>
+                                                </div>
+                                                    <p>
+                                                    <button class="btn btn-default btn-sm"><i class="fa fa-cloud-download"></i> Generate PDF</button>
+                                                </p>
+                                        </div><!-- /.col -->
+                                    </div><!-- /.row - inside box -->
+                                </section>

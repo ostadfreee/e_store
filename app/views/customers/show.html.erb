@@ -1,0 +1,55 @@
+<%- model_class = Customer -%>
+<% provide(:header ,'Customer') %>
+
+<div class="page-header">
+  <h1><%#=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:first_name) %></th>
+      <th><%= model_class.human_attribute_name(:last_name) %></th>
+      <th><%= model_class.human_attribute_name(:email) %></th>
+      <th><%= model_class.human_attribute_name(:address) %></th>
+      <th><%= model_class.human_attribute_name(:birthday) %></th>
+      <th><%= model_class.human_attribute_name(:customer_number) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= model_class.human_attribute_name(:order_name) %></th>
+
+      
+    </tr>
+  </thead>
+  <tbody>
+     <tr>
+        <td><%= @customer.id %></td>
+        <td><%= @customer.first_name %></td>
+        <td><%= @customer.last_name %></td>
+        <td><%= truncate(@customer.email, :length=> 10) %></td>
+        <td><%= @customer.address %></td>
+        <td><%= @customer.birthday %></td>
+        <td><%= @customer.customer_number %></td>
+        <td><%=l @customer.created_at %></td>
+        <td><% @customer.orders.each do |order| %>
+            <%= link_to(order.name , order_path(order.id)) %> </br>
+          <% end %>
+            
+        </td>
+        
+        
+      </tr>
+    
+  </tbody>
+</table>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              customers_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_customer_path(@customer), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              customer_path(@customer),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

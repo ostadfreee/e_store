@@ -1,0 +1,19 @@
+<%= simple_form_for @user, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :username, :hint => 'Should be filled', :placeholder => 'User Name' %>
+  <%= f.input :first_name, :hint => 'Should be filled', :placeholder => 'First Name'   %>
+  <%= f.input :last_name , :hint => 'Should be filled ',:placeholder => 'Last Name' %>
+  <%= f.input :email, :hint => 'Should be filled ',:placeholder => 'Email' %>
+  <%= f.input :password, :hint => 'Should be filled ',:placeholder => 'Password'  %>
+     
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                users_path, :class => 'btn' %>
+  </div>
+<% end %>
+
+
+    
+    
+  
+ 

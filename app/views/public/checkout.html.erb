@@ -1,0 +1,62 @@
+<%- model_class = Product -%>
+<% provide(:title, 'Checkout') %>
+<% provide(:header ,'Checkout') %>
+
+<div class="page-header">
+  
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+        <th>&nbsp;</th>
+        <th>&nbsp;</th>     
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:category) %></th>
+      <th><%= model_class.human_attribute_name(:quantity) %></th>
+      <th><%= model_class.human_attribute_name(:price) %></th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% @basket.items.each do |item|  %>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td><%= h(item.product.name) %></td>
+        <td><%= h(item.product.category.name) if item.product.category %></td>
+        <td><%= item.quantity %></td>
+        <td><%= number_to_currency(item.price)%></td>
+                
+      </tr>
+     <% end %>
+     <tr> 
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>Total Price:</td>
+        <td> <%= number_to_currency(@basket.total_price) %> </td>
+
+
+      </tr>
+      </tbody>
+</table>
+<%= simple_form_for @customer, :url => {:action => 'save_order'}, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :first_name, :validate => true, :placeholder => 'First Name' %>
+  <%= f.input :last_name, :validate => true, :placeholder => 'Last Name'   %>
+  <%= f.input :email , :validate => true, :placeholder => 'Email' %>
+  <%= f.input :address, :placeholder => 'Address' %>
+  <%= f.input :customer_number,:placeholder => 'Customer Number'  %>
+  <%= f.input :birthday, :placeholder => 'Birthday'  %>
+
+ <div class="form-actions">
+    <%= submit_tag 'Order', :class => 'btn btn-primary btn-sm' %>
+    <%= link_to t('.continue shopping', :default => t("helpers.links.continue shopping")),
+                      {:action => 'list'}, :class => 'btn btn-primary btn-sm ' %> 
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                {:action => 'show_basket'}, :class => 'btn btn-danger btn-sm pull-right' %>
+  </div>
+<% end %>
+
+

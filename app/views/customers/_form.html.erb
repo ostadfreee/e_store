@@ -1,0 +1,22 @@
+<%= simple_form_for @customer, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :first_name, :hint => 'Should be filled', :placeholder => 'First Name' %>
+  <%= f.input :last_name, :hint => 'Should be filled', :placeholder => 'Last Name'   %>
+  <%= f.input :email , :hint => 'Should be filled ',:placeholder => 'Email' %>
+  <%= f.input :address, :placeholder => 'Address' %>
+  <%= f.input :customer_number,:placeholder => 'Customer Number'  %>
+  <%= f.input :birthday, :placeholder => 'Birthday'  %>
+
+     
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                customers_path, :class => 'btn' %>
+  </div>
+<% end %>
+
+
+ 
+  
+ 
+ 
+ 

@@ -1,0 +1,17 @@
+<%= simple_form_for @product, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :name, :placeholder => 'Name' %>
+  <%= f.input :price,:placeholder => 'Price'   %>
+  <%= f.input :unite ,:placeholder => 'Unite' %>
+  <%= f.input :order_id, :placeholder => 'Order ID' %>
+  <%= f.input :discount,:placeholder => 'Discount'  %>
+  <%= f.input :product_serial,:placeholder => 'Product Serial'  %>
+  <%= f.association :category, collection: Category.sorted, prompt: "Choose a Category" %>
+  <%= f.input :image_path, :placeholder => 'Image'  %>
+  <%= f.input :product_content,:placeholder => 'Product Content ... '  %>
+   
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                products_path, :class => 'btn' %>
+  </div>
+<% end %>

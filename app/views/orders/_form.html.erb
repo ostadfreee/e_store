@@ -1,0 +1,16 @@
+<%= simple_form_for @order, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :name, :hint => 'Should be filled', :placeholder => 'Name' %>
+  <%= f.input :order_number, :placeholder => 'Order Number'   %>
+  <%= f.input :sum , :placeholder => 'Sum'%>
+  <%= f.input :customer_id,:placeholder => 'Customer ID'  %>
+  <%= f.input :order_date , :placeholder => 'Order Date' %>
+
+    
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                orders_path, :class => 'btn' %>
+  </div>
+<% end %>
+  
+  

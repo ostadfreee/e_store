@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<head>
+ <title><%= full_title(yield(:title)) %></title>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+  <![endif]-->
+  <%= stylesheet_link_tag "application", media: "all" %>
+  <%= javascript_include_tag "application"%>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+
+
+  
+    <body class="skin-blue">
+        <!-- header logo: style can be found in header.less -->
+      <%= render 'layouts/header_public' %>
+        <div class="wrapper row-offcanvas row-offcanvas-left">
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="left-side sidebar-offcanvas">                
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+                    <!-- Sidebar user panel -->
+                   <%= render "layouts/user_panel_public" %>
+                    <!-- search form -->
+                   <%= render "layouts/search_form_public" %>
+                    <!-- /.search form -->
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
+                   <%= render "layouts/sidebar_public" %>
+                </section>
+                <!-- /.sidebar -->
+            </aside>
+
+            <!-- Right side column. Contains the navbar and content of the page -->
+            <aside class="right-side">                
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h5>
+                        <%= render_breadcrumbs %>
+                    </h5>
+                  
+                </section>
+                <% flash.each do |name, msg| %>
+                       <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+                       <a class="close" data-dismiss="alert">×</a>
+                       <%= msg %>
+                       </div>
+                <% end %>
+               <!-- Main content -->
+                <section class="content">
+                  <%= yield %>
+
+
+                </section><!-- /.content -->
+            </aside><!-- /.right-side -->
+        </div><!-- ./wrapper -->
+   
+
+       </body>
+</html>
