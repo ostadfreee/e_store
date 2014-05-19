@@ -14,10 +14,10 @@
                                 <% @categories.each do |category| if category.products.count != 0 %>
 
                               
-                               <li><%= link_to(category.name + "\n"+ "\n" + "("+category.products.count.to_s+")" ,:action => 'list_product', :id => category.id)%></li>
+                               <li><%= link_to (category.name + "\n"+ "\n" + "("+category.products.count.to_s+")") ,:action => 'list_product', :id => category.id%></li>
                                 <% end %> 
                               <% end %> 
-                                              
+                        
                             </ul>
                         </li>
                         <li class="treeview">

@@ -11,21 +11,21 @@ Customer.delete_all
 a= Customer.create(:first_name => Name.first_name ,:last_name => Name.last_name, :email=> Internet.email, 
 	:address=> Address.country, :birthday => Time.now, :customer_number=> ((rand *100).to_i))
 end
-Order.delete_all
+Category.delete_all
 50.times do 
-b= Order.create(:name => Lorem.word ,:order_number=> (Number.digit.to_i), :order_date => Time.now, :sum=> Commerce.price, :customer_id => Number.digit.to_i)
+d= Category.create(:name => Company.name)
 end
 Product.delete_all
 r = %w{thumbnail.jpg thumbnail(1).jpg thumbnail(2).jpg thumbnail(3).jpg thumbnail(4).jpg thumbnail(5).jpg
 thumbnail(6).jpg thumbnail(7).jpg thumbnail(8).jpg thumbnail(9).jpg thumbnail(10).jpg}
 50.times do 
 c= Product.create(:name => Commerce.product_name ,:product_serial => Number.digit.to_i, :price=> Commerce.price.to_d,
-	:unite=> Number.digit.to_i, :product_content=> Lorem.paragraph, :category_id => Number.digit.to_i,
+	:unite=> Number.digit.to_i, :product_content=> Lorem.paragraph, :category_id => ((rand *100).to_i),
 	:image_path => r.sample)
 end
-Category.delete_all
+Order.delete_all
 50.times do 
-d= Category.create(:name => Company.name)
+b= Order.create(:order_number=> (Number.digit.to_i), :order_date => Time.now, :sum=> Commerce.price, :customer_id => Number.digit.to_i)
 end
 User.delete_all
 50.times do 

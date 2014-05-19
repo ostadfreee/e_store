@@ -56,7 +56,20 @@ def remove_from_basket
  end
  def show_receipt 
   @order = Order.find(params[:id])
- end 
+  @order.sum = 0.0
+  @order.quantity = 0
+  @order.order_number = "#"+Time.now.strftime("%d%m%y")+"-"+(@order.id).to_s+"-"+(rand(29)*100).to_s
+  @order.order_date = Time.now
+  @order.line_items.each do |item|
+     @order.products << Product.find(item.product_id)
+     @order.sum += (item.quantity*item.price).to_d
+     @order.quantity += item.quantity
+      end 
+     @order.products.each do |product|
+      @order.list_of_products << product.name
+      end
+     @order.save      
+      end 
  def list_product
   @category = Category.find(params[:id])
   @products = @category.products.paginate(:per_page => 5 , :page => params[:page])

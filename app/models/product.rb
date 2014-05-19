@@ -9,7 +9,7 @@ class Product < ActiveRecord::Base
 	validates :name, :presence => true,
                          :length => { :maximum => 25 }
     validates :product_content, :presence => true,
-                        :length => { :maximum => 50 }
+                        :length => { :maximum => 250 }
     #validates_inclusion_of :product_content, :in => CONTENT_TYPES,
     #:message => "must be one of: #{CONTENT_TYPES.join(', ')}"
     

@@ -10,9 +10,11 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:order_number) %></th>
       <th><%= model_class.human_attribute_name(:order_date) %></th>
+      <th><%= model_class.human_attribute_name(:list_of_products) %></th>
+      <th><%= model_class.human_attribute_name(:quantity_of_product) %></th>
+      <th><%= model_class.human_attribute_name(:quantity) %></th>
       <th><%= model_class.human_attribute_name(:sum) %></th>
       <th><%= model_class.human_attribute_name(:customer_id) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
@@ -23,9 +25,13 @@
     <% @orders.each do |order| %>
       <tr>
         <td><%= link_to order.id, order_path(order) %></td>
-        <td><%= order.name %></td>
         <td><%= order.order_number %></td>
         <td><%= order.order_date %></td>
+        <td><%= order.list_of_products.each do |list|  %>
+                <%= list %>
+                <% end %></td>
+        <td><%= order.quantity_of_product %></td>
+        <td><%= order.quantity %></td>
         <td><%= order.sum %></td>
         <td><%= link_to(order.customer_id, customer_path(order.customer_id)) if order.customer %></td>
         <td><%=l order.created_at %></td>

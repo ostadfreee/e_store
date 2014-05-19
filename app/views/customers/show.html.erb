@@ -16,7 +16,7 @@
       <th><%= model_class.human_attribute_name(:birthday) %></th>
       <th><%= model_class.human_attribute_name(:customer_number) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%= model_class.human_attribute_name(:order_name) %></th>
+      <th><%= model_class.human_attribute_name(:orders) %></th>
 
       
     </tr>
@@ -32,7 +32,7 @@
         <td><%= @customer.customer_number %></td>
         <td><%=l @customer.created_at %></td>
         <td><% @customer.orders.each do |order| %>
-            <%= link_to(order.name , order_path(order.id)) %> </br>
+            <%= link_to(order.order_number , order_path(order.id)) %> </br>
           <% end %>
             
         </td>

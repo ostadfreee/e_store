@@ -52,13 +52,15 @@ ActiveRecord::Schema.define(version: 20140507010532) do
   add_index "line_items", ["order_id", "product_id"], name: "index_line_items_on_order_id_and_product_id", using: :btree
 
   create_table "orders", force: true do |t|
-    t.string   "name",         limit: 25
-    t.integer  "order_number"
     t.datetime "order_date"
     t.decimal  "sum"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "customer_id"
+    t.integer  "quantity_of_product"
+    t.integer  "quantity"
+    t.string   "order_number"
+    t.string   "list_of_products",    default: [], array: true
   end
 
   add_index "orders", ["customer_id"], name: "index_orders_on_customer_id", using: :btree
