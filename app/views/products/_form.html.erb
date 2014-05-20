@@ -2,7 +2,6 @@
   <%= f.input :name, :placeholder => 'Name' %>
   <%= f.input :price,:placeholder => 'Price'   %>
   <%= f.input :unite ,:placeholder => 'Unite' %>
-  <%= f.input :order_id, :placeholder => 'Order ID' %>
   <%= f.input :discount,:placeholder => 'Discount'  %>
   <%= f.input :product_serial,:placeholder => 'Product Serial'  %>
   <%= f.association :category, collection: Category.sorted, prompt: "Choose a Category" %>

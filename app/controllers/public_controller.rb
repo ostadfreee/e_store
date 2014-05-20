@@ -58,18 +58,21 @@ def remove_from_basket
   @order = Order.find(params[:id])
   @order.sum = 0.0
   @order.quantity = 0
-  @order.order_number = "#"+Time.now.strftime("%d%m%y")+"-"+(@order.id).to_s+"-"+(rand(29)*100).to_s
+  @order.quantity_of_product = []
+  @order.list_of_products = []
+  @order.order_number = "#"+Time.now.strftime("%d%m%y")+"-"+(@order.id).to_s+"-"+Random.number(1..1000).to_s
   @order.order_date = Time.now
   @order.line_items.each do |item|
-     @order.products << Product.find(item.product_id)
+     #@order.products << Product.find(item.product_id)
+     #@order.products.each do |product|
      @order.sum += (item.quantity*item.price).to_d
      @order.quantity += item.quantity
+     @order.quantity_of_product << item.quantity.to_s
+     @order.list_of_products << item.product_id.to_s
+
       end 
-      @order.products.each do |product|
-      @order.list_of_products << product.name
-      end
      @order.save      
-      end 
+ end 
  def list_product
   @category = Category.find(params[:id])
   @products = @category.products.paginate(:per_page => 5 , :page => params[:page])

@@ -23,6 +23,7 @@ gem "breadcrumbs_on_rails"
 gem "simple_form"
 gem 'judge'
 gem 'judge-simple_form'
+gem 'random_data'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'

@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20140507010532) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "customer_id"
-    t.integer  "quantity_of_product"
+    t.string   "quantity_of_product",              array: true
     t.integer  "quantity"
     t.string   "order_number"
     t.string   "list_of_products",    default: [], array: true
@@ -75,12 +75,9 @@ ActiveRecord::Schema.define(version: 20140507010532) do
     t.text     "product_content"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "order_id"
     t.integer  "category_id"
     t.string   "image_path"
   end
-
-  add_index "products", ["order_id"], name: "index_products_on_order_id", using: :btree
 
   create_table "sessions", force: true do |t|
     t.string   "session_id", null: false

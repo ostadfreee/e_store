@@ -1,34 +1,57 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
 include Faker 
+include RandomData
 Customer.delete_all
 50.times do 
-a= Customer.create(:first_name => Name.first_name ,:last_name => Name.last_name, :email=> Internet.email, 
-	:address=> Address.country, :birthday => Time.now, :customer_number=> ((rand *100).to_i))
+customer =  Customer.create(
+	       :first_name => Random.first_name ,
+	       :last_name => Random.last_name,
+	       :email=> Random.email, 
+	       :address=> Random.address_line_1,
+	       :birthday => Array(Date.new(2000,1,1)..Date.today).sample,
+	       :customer_number=> Random.number(1..100))
 end
+
 Category.delete_all
 50.times do 
-d= Category.create(:name => Company.name)
+category = Category.create(
+	       :name => Random.companyname)
 end
+
+Product.delete_all
 Product.delete_all
 r = %w{thumbnail.jpg thumbnail(1).jpg thumbnail(2).jpg thumbnail(3).jpg thumbnail(4).jpg thumbnail(5).jpg
 thumbnail(6).jpg thumbnail(7).jpg thumbnail(8).jpg thumbnail(9).jpg thumbnail(10).jpg}
 50.times do 
-c= Product.create(:name => Commerce.product_name ,:product_serial => Number.digit.to_i, :price=> Commerce.price.to_d,
-	:unite=> Number.digit.to_i, :product_content=> Lorem.paragraph, :category_id => ((rand *100).to_i),
-	:image_path => r.sample)
+	      :name => Commerce.product_name,
+	      :product_serial => Random.number(1000..5000),
+	      :price=> Commerce.price.to_d,
+	      :unite=> Random.number(100..1000),
+	      :product_content=> Lorem.paragraph,
+	      :category_id => Random.number(1..100),
+	      :image_path => r.sample)
 end
 Order.delete_all
 50.times do 
-b= Order.create(:order_number=> (Number.digit.to_i), :order_date => Time.now, :sum=> Commerce.price, :customer_id => Number.digit.to_i)
+order = Order.create(
+	    :order_number=> Random.number(1..5000).to_s,
+	    :order_date => Array(Date.new(2000,1,1)..Date.today).sample,
+	    :sum=> Commerce.price)
 end
 User.delete_all
 50.times do 
-e= User.create(:username => Internet.user_name, :first_name => Name.first_name ,:last_name => Name.last_name,
-:email=> Internet.email, :password => Internet.password )
-end
+user = User.create(
+	   :username => Internet.user_name,
+	   :first_name => Name.first_name ,
+	   :last_name => Name.last_name,
+       :email=> Internet.email,
+       :password => Internet.password)
+
+
+
+
+
+
+
+
+
+

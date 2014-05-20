@@ -15,7 +15,6 @@
       <th><%= model_class.human_attribute_name(:discount) %></th>
       <th><%= model_class.human_attribute_name(:unite) %></th>
       <th><%= model_class.human_attribute_name(:product_content) %></th>
-      <th><%= model_class.human_attribute_name(:order_id) %></th>
       <th><%= model_class.human_attribute_name(:category_id) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -31,7 +30,6 @@
         <td><%= product.discount %></td>
         <td><%= product.unite %></td>
         <td><%= link_to truncate(product.product_content, :length=> 30), product_path(product) %></td>
-        <td><%= product.order_id %></td>
         <td><%= link_to(product.category.name, category_path(product.category_id)) if product.category %></td>
         <td><%=l product.created_at %></td>
         <td>

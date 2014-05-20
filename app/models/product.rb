@@ -1,8 +1,8 @@
 class Product < ActiveRecord::Base
-	belongs_to :order
 	belongs_to :category
 	has_and_belongs_to_many :customers
 	has_many :line_items
+	has_many :orders , :through => :line_items
 
 	#CONTENT_TYPES = ['text', 'HTML']
 	validates_presence_of :price, :unite, :category_id
