@@ -25,7 +25,7 @@
         <td><%= @order.id %></td>
         <td><%= @order.order_number %></td>
         <td><%= @order.order_date %></td>
-        <td><%= @order.products.each do |product| %>
+        <td><% @order.products.each do |product| %>
                 <%= product.name %> </br>
                 <% end%></td>
         <td><%= @order.quantity_of_product %></td>

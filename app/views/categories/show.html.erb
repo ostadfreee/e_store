@@ -15,9 +15,8 @@
    <tbody>
      <tr>
       <td><%= @category.name %></td>
-       <td><% @category.products.each do |product| if category.products %> 
+       <td><% @category.products.each do |product|  %> 
       <%= link_to product.name, {:controller => 'products', :action => 'show', :id => product.id}%> </br>
-        <% end %>
         <% end %>
       </td>
       </tr>

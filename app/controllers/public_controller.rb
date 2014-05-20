@@ -65,7 +65,7 @@ def remove_from_basket
      @order.sum += (item.quantity*item.price).to_d
      @order.quantity += item.quantity
       end 
-     @order.products.each do |product|
+      @order.products.each do |product|
       @order.list_of_products << product.name
       end
      @order.save      
